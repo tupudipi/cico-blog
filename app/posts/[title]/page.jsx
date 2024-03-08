@@ -1,4 +1,6 @@
-import Image from "next/image"
+import Image from "next/image";
+import Comments from "../../components/comments/Comments";
+import Menu from "../../components/menu/Menu";
 
 // const getData = async (slug) => {
 //     const res = await fetch(`http://localhost:3000/api/posts/${slug}`, 
@@ -12,45 +14,49 @@ import Image from "next/image"
 //     return res.json();
 // }
 
-const SinglePage = async ({ params }) => {
-    const { slug } = params;
+const SinglePage = async () => {
+    // const { slug } = params;
 
-    const data = await getData(slug);
+    // const data = await getData(slug);
 
     return (
-        <div className={styles.container}>
-            <div className={styles.infoContainer}>
-                <div className={styles.textContainer}>
-                    <h2 className={styles.title}>{data?.title}</h2>
-                    <div className={styles.user}>
-                        {data?.user?.image &&
-                            <div className={styles.userImageContainer}>
-                                <Image src={data.user.image} alt="" fill className={styles.avatar} />
-                            </div>
-                        }
-                        <div className={styles.userTextContainer}>
-                            <span className={styles.user}>{data?.user.name}</span>
-                            <span className={styles.user}>{data?.createdAt.substr(0,10)}</span>
+        <main>
+            <div>
+                <div>
+                    <h2>Post title</h2>
+                    <div>
+                        <div className=''>
+                            <Image src='' alt='' fill className='' />
+                        </div>
+                        <div >
+                            <span >Post Author User Name</span>
+                            <span >08.03.2024</span>
                         </div>
                     </div>
                 </div>
-                {data?.img &&
-                    <div className={styles.imageContainer}>
-                        <Image src={data.img} alt="" fill className={styles.image} />
-                    </div>
-                }
-            </div>
-            <div className={styles.content}>
-                <div className={styles.post}>
-                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: data?.desc }} />
 
-                    <div className={styles.comments}>
-                        <Comments postSlug={slug} />
+                <div>
+                    <Image src='' alt='' fill className='' />
+                </div>
+
+            </div>
+
+            <div className="flex gap-32">
+                <div >
+                    <div>
+                        <p>Post content Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nemo nulla cupiditate harum obcaecati iusto porro. Sequi veritatis culpa porro maxime recusandae quod est! Tempora corrupti exercitationem error sapiente molestiae.
+                            Quis rem asperiores nam laboriosam corporis assumenda, quas odio nesciunt consequatur fugiat aut nulla laborum quibusdam temporibus. Animi non explicabo quasi doloremque exercitationem, ipsum, nam incidunt voluptate nesciunt, similique error?
+                        </p>
+                    </div>
+
+                    <div >
+                        <Comments />
                     </div>
                 </div>
+
                 <Menu />
             </div>
-        </div>
+        </main>
     )
 }
 
