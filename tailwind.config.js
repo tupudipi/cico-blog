@@ -14,5 +14,22 @@ module.exports = {
       },
     },
   },
+  theme: {
+    extend: {
+      boxShadow: {
+        'blue': '0 4px 14px 0 rgba(0, 118, 255, 0.39)',
+        'red': '0 4px 14px 0 rgba(255, 0, 0, 0.39)',
+        'green': '0 4px 14px 0 rgba(0, 255, 0, 0.39)',
+        'yellow': '0 4px 14px 0 rgba(255, 255, 0, 0.39)',
+        'purple': '0 4px 14px 0 rgba(128, 0, 128, 0.39)',
+        'pink': '0 4px 14px 0 rgba(255, 105, 180, 0.39)',
+      }
+    }
+  },
+  variants: {
+    extend: {
+      boxShadow: ['hover'],
+    },
+  },
   plugins: [],
 };
