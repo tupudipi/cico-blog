@@ -4,7 +4,7 @@ const CategoryList = () => {
   return (
     <div id="categories">
     <h2 className='text-2xl font-semibold mt-6 mb-3'>Categories</h2>
-    <div className='flex gap-4 w-full'>
+    <div className='flex gap-4 w-full flex-wrap'>
       <Link href="/posts?cat=style" className='grow'>
         <button className='w-full rounded-full py-1 px-4 bg-blue-500 text-white opacity-75 hover:opacity-100 hover:shadow-blue transition-all'>Style</button>
       </Link>

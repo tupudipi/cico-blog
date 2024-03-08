@@ -16,7 +16,7 @@ export default function Home() {
         </div>
 
         <div id="intro">
-          <div className='flex gap-4 py-4'>
+          <div className='flex flex-col md:flex-row gap-4 py-4'>
             <div>
               <Image src="/cico.png" alt="Cico the cat" width={900} height={900} />
             </div>
@@ -24,7 +24,7 @@ export default function Home() {
               <h2 className='text-xl font-semibold'>Meow there! 🐾 Join me on a whisker-twitching adventure through my world of feline musings!</h2>
               <p>Embark on a feline odyssey with yours truly! From the joy of morning cuddles to savoring the finest pâté, and reveling in the thrill of laser pointers, this is my cozy corner of the web. Explore the tales and the intriguing world behind these green eyes. Dive in and discover the purr-sonalities that make me the one and only Cico! 🐾✨</p>
               <Link href="/about">
-                <button className='rounded-full border-2 py-1 px-4 border-gray-400 text-gray-400 hover:border-gray-700 shadow-md hover:text-gray-700 hover:shadow-lg transition-all'>
+                <button className='w-full md:w-fit rounded-full border-2 py-1 px-4 border-gray-400 text-gray-400 hover:border-gray-700 shadow-md hover:text-gray-700 hover:shadow-lg transition-all'>
                   Read More
                 </button>
               </Link>
@@ -34,9 +34,9 @@ export default function Home() {
 
         <CategoryList />
 
-        <div id="content" className='flex justify-between gap-32'>
+        <div id="content" className='flex flex-col md:flex-row md:justify-between sm:gap-12 md:gap-32'>
           <CardList />
-          <Menu />
+            <Menu />
         </div>
 
       </main>
