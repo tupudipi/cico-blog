@@ -20,20 +20,20 @@ const ContactPage = () => {
         Simply drop a message to my faithful owner&apos;s mailbox, and rest assured, your missive will be treated with the utmost importance. You can also reach us through the other channels. Remember, while I may be the star, every star needs a trusty constellation of support.
       </p>
 
-      <div className="flex gap-12 items-center justify-evenly md:justify-start">
+      <div className="my-8 flex gap-12 items-center justify-evenly md:justify-start">
         <Link href="mailto:tupudipi@gmail.com">
-          <i className="mx-6 text-gray-600 hover:text-black hover:shadow-md transition-all">
-            <FontAwesomeIcon icon={faEnvelope} />
+          <i className=" text-gray-600 hover:text-black transition-all">
+            <FontAwesomeIcon icon={faEnvelope} className="h-10"/>
           </i>
         </Link>
         <Link href="https://www.linkedin.com/in/alexandru-stefan-tudor">
-          <i className="mx-6 text-gray-600 hover:text-black hover:shadow-md transition-all">
-            <FontAwesomeIcon icon={faLinkedin} />
+          <i className=" text-gray-600 hover:text-black transition-all">
+            <FontAwesomeIcon icon={faLinkedin} className="h-10"/>
           </i>
         </Link>
         <Link href="https://github.com/tupudipi">
-          <i className="mx-6 text-gray-600 hover:text-black hover:shadow-md transition-all">
-            <FontAwesomeIcon icon={faGithub} />
+          <i className=" text-gray-600 hover:text-black transition-all">
+            <FontAwesomeIcon icon={faGithub} className="h-10"/>
           </i>
         </Link>
       </div>

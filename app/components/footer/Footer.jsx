@@ -13,20 +13,20 @@ const Footer = () => {
                     <h2>Cico Blog</h2>
                 </div>
                 <p>Paws and whiskers, thanks for wandering through my digital realm. Stay curious, stay cozy! 🐾✨</p>
-                <div className="flex gap-4 items-center justify-evenly md:justify-start">
+                <div className="my-4 flex gap-4 items-center justify-evenly md:justify-start md:gap-8">
                     <Link href="mailto:tupudipi@gmail.com">
-                        <i className="mx-3 text-gray-600 hover:text-black hover:shadow-md transition-all">
-                            <FontAwesomeIcon icon={faEnvelope} />
+                        <i className=" text-gray-600 hover:text-black transition-all">
+                            <FontAwesomeIcon icon={faEnvelope} className="h-8"/>
                         </i>
                     </Link>
                     <Link href="https://www.linkedin.com/in/alexandru-stefan-tudor">
-                        <i className="mx-3 text-gray-600 hover:text-black hover:shadow-md transition-all">
-                            <FontAwesomeIcon icon={faLinkedin} />
+                        <i className=" text-gray-600 hover:text-black transition-all">
+                            <FontAwesomeIcon icon={faLinkedin} className="h-8"/>
                         </i>
                     </Link>
                     <Link href="https://github.com/tupudipi">
-                        <i className="mx-3 text-gray-600 hover:text-black hover:shadow-md transition-all">
-                            <FontAwesomeIcon icon={faGithub} />
+                        <i className=" text-gray-600 hover:text-black transition-all">
+                            <FontAwesomeIcon icon={faGithub} className="h-8"/>
                         </i>
                     </Link>
                 </div>
