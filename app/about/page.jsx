@@ -21,7 +21,7 @@ const AboutPage = () => {
                 <br /><br />
                 Here at Cico&apos;s Domain, we take web development as seriously as a fresh bowl of fish pâté. This blog is a charming creation brought to life using <strong>Next.js</strong>, a delightful React framework that ensures seamless navigation through Cico&apos;s anecdotes. The database wizardry is powered by <strong>MongoDB</strong>, orchestrated with precision through <strong>Prisma ORM</strong>.
                 <br /><br />
-                For the purr-fect file hosting, we turn to <strong>Firebase</strong>, ensuring every snapshot of Cico&apos;s captivating moments finds its cozy spot on the web. <strong>Google Auth</strong> extends a friendly paw, allowing users to partake in this feline adventure with secure accounts. And, of course, our sleek design is crafted with love and a dash of catnip, employing <strong>Tailwind CSS</strong>.
+                For the purr-fect file hosting, we turn to <strong>Firebase</strong>, ensuring every snapshot of Cico&apos;s captivating moments finds its cozy spot on the web. <strong>NextAuth.js</strong> extends a friendly paw, allowing users to partake in this feline adventure with secure accounts. And, of course, our sleek design is crafted with love and a dash of catnip, employing <strong>Tailwind CSS</strong>.
                 <br /><br />
                 Wishing You Whiskers and Wonder
             </p>
