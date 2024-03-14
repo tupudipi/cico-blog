@@ -5,10 +5,11 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { signOut, useSession } from 'next-auth/react'
 
 const Navbar = () => {
     const page = usePathname();
-    console.log(page)
+    const { data: session } = useSession();
 
     return (
         <>
@@ -41,9 +42,17 @@ const Navbar = () => {
                 </ul>
 
                 <div className='flex gap-4 items-center'>
-                    <Link href="/login">
-                        <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-all">Login</span>
-                    </Link>
+                    {session ? (
+                        <div className='flex gap-2'>
+                            <Image src={session.user.image} width={40} height={40} className='rounded-full' alt='User Image' />
+                            <span className="bg-violet-400 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full transition-all cursor-pointer" onClick={() => signOut()}>Logout</span>
+                        </div>
+
+                    ) : (
+                        <Link href="/login">
+                            <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-all">Login</span>
+                        </Link>
+                    )}
                     <i className="w-[22px] h-[22px] mx-3 text-gray-800 cursor-pointer hover:text-black hover:shadow-md transition-all md:hidden">
                         <FontAwesomeIcon icon={faBars} />
                     </i>

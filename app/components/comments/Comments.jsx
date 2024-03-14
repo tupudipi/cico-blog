@@ -9,8 +9,8 @@ const Comments = () => {
     const [desc, setDesc] = useState('');
 
     return (
-        <div id='container' className='mt-12'>
-            <h3 id='title' className='mb-7 text-xl font-semibold'>Comments</h3>
+        <div id='container'>
+            <h3 id='title' className='text-2xl font-semibold mt-6 mb-3'>Comments</h3>
             {/* {status === "authenticated" ? ( */}
                 <div id='write' className='flex flex-col md:flex-row items-center justify-between gap-4 md:gap-7'>
                     <textarea id='input' placeholder='write a comment...' onChange={e => setDesc(e.target.value)} value={desc} className='p-5 w-full rounded-md border-solid border-2 border-gray-200'></textarea>

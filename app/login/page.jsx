@@ -1,6 +1,8 @@
+'use client'
 import Link from 'next/link';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { signIn } from 'next-auth/react';
 
 const page = () => {
     return (
@@ -44,7 +46,7 @@ const page = () => {
                     </div>
 
                     <div className='flex gap-4 h-12 mt-2'>
-                        <div className='rounded-md border-2 shadow-sm hover:shadow grow flex p-2 items-center text-gray-600 hover:text-black transition-all '>
+                        <div className='rounded-md border-2 shadow-sm hover:shadow grow flex p-2 items-center text-gray-600 hover:text-black transition-all' onClick={() => signIn("google")}>
                             <Link href="/" className='w-full flex justify-center'>
                                 <i className="text-lg">
                                     <FontAwesomeIcon icon={faGoogle} className='h-8' />
