@@ -13,6 +13,7 @@ const Navbar = () => {
                 </div>
                 <ul className='flex gap-6 items-center'>
                     <li><Link href="/" className="hover:text-blue-500 transition-all">Home</Link></li>
+                    <li><Link href="/posts" className="hover:text-blue-500 transition-all">Posts</Link></li>
                     <li><Link href="/about" className="hover:text-blue-500 transition-all">About</Link></li>
                     <li><Link href="/contact" className="hover:text-blue-500 transition-all">Contact</Link></li>
                 </ul>

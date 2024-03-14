@@ -22,7 +22,7 @@ const Comments = () => {
             <div id='comments' className='mb-12'>
                 {/* {isLoading ? "Loading..." : data.map((comment) => ( */}
                     <div id='comment' className='mt-12'>
-                        <div id='user' className='flex items-centerg gap-5 mb-5'>
+                        <div id='user' className='flex items-center gap-5 mb-5'>
                             <Image className='rounded-full object-cover' id='avatar' src='/coding.png' alt="Comment Author Image" width={50} height={50}  />
                             <div id='userInfo' className='flex flex-col gap-1 text-gray-500'>
                                 <span className='font-medium'>User Name</span>
