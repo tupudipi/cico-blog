@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { signOut, useSession } from 'next-auth/react'
 
 const Navbar = () => {
@@ -55,8 +55,12 @@ const Navbar = () => {
                         </Link>
                     )}
                     <input type="checkbox" id="menu-toggle" className="hidden peer" />
-                    <label htmlFor="menu-toggle" className="flex items-center w-[24px] h-[24px] mx-3 text-gray-800 cursor-pointer hover:text-black transition-all md:hidden z-10">
+                    <label htmlFor="menu-toggle" className="flex items-center w-[24px] h-[24px] mx-3 text-gray-800 cursor-pointer hover:text-black transition-all md:hidden z-10  peer-checked:hidden">
                         <FontAwesomeIcon icon={faBars} className='h-5' />
+                        <FontAwesomeIcon icon={faTimes} className='h-5 hidden peer-checked:block' />
+                    </label>
+                    <label htmlFor="menu-toggle" className="flex items-center w-[24px] h-[24px] mx-3 text-gray-800 cursor-pointer hover:text-black transition-all md:hidden z-10  hidden peer-checked:block">
+                        <FontAwesomeIcon icon={faTimes} className='h-5' />
                     </label>
 
                     <ul className='absolute top-0 left-0 w-screen h-screen hidden flex-col justify-center items-center backdrop-blur-md bg-white/60 gap-8 peer-checked:flex md:hidden'>
