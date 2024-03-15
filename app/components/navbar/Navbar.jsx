@@ -6,10 +6,12 @@ import { usePathname } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { signOut, useSession } from 'next-auth/react'
+import { useState } from 'react'
 
 const Navbar = () => {
     const page = usePathname();
     const { data: session } = useSession();
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
@@ -54,33 +56,28 @@ const Navbar = () => {
                             <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-all">Login</span>
                         </Link>
                     )}
-                    <input type="checkbox" id="menu-toggle" className="hidden peer" />
-                    <label htmlFor="menu-toggle" className="flex items-center w-[24px] h-[24px] mx-3 text-gray-800 cursor-pointer hover:text-black transition-all md:hidden z-10  peer-checked:hidden">
-                        <FontAwesomeIcon icon={faBars} className='h-5' />
-                        <FontAwesomeIcon icon={faTimes} className='h-5 hidden peer-checked:block' />
-                    </label>
-                    <label htmlFor="menu-toggle" className="flex items-center w-[24px] h-[24px] mx-3 text-gray-800 cursor-pointer hover:text-black transition-all md:hidden z-10  hidden peer-checked:block">
-                        <FontAwesomeIcon icon={faTimes} className='h-5' />
-                    </label>
+                    <button onClick={() => setIsOpen(!isOpen)} className="flex items-center w-[24px] h-[24px] mx-3 text-gray-800 cursor-pointer hover:text-black transition-all md:hidden z-50  peer-checked:hidden">
+                        <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className='h-5' />
+                    </button>
 
-                    <ul className='absolute top-0 left-0 w-screen h-screen hidden flex-col justify-center items-center backdrop-blur-md bg-white/60 gap-8 peer-checked:flex md:hidden'>
+                    <ul className={`absolute top-0 left-0 w-screen h-screen ${isOpen ? 'flex' : 'hidden'} flex-col justify-center items-center backdrop-blur-md bg-white/60 gap-8 peer-checked:flex md:hidden z-40`}>
                         <li>
-                            <Link href="/" className='text-2xl'>
+                            <Link href="/" className='text-2xl' onClick={() => setIsOpen(false)}>
                                 <span className={page === "/" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Home</span>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/posts" className='text-2xl'>
+                            <Link href="/posts" className='text-2xl' onClick={() => setIsOpen(false)}>
                                 <span className={page === "/posts" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Posts</span>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/about" className='text-2xl'>
+                            <Link href="/about" className='text-2xl' onClick={() => setIsOpen(false)}>
                                 <span className={page === "/about" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>About</span>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/contact" className='text-2xl'>
+                            <Link href="/contact" className='text-2xl' onClick={() => setIsOpen(false)}>
                                 <span className={page === "/contact" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Contact</span>
                             </Link>
                         </li>
