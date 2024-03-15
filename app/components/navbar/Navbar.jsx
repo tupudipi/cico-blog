@@ -18,7 +18,8 @@ const Navbar = () => {
                     <Image src="/logo.png" width={48} height={48} className='rounded-full' alt='Cico Blog Logo' />
                     <h2 className='text-xl font-semibold'>Cico's Blog</h2>
                 </div>
-                <ul className='flex gap-6 items-center'>
+
+                <ul className='hidden md:flex gap-6 items-center '>
                     <li>
                         <Link href="/">
                             <span className={page === "/" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Home</span>
@@ -53,9 +54,33 @@ const Navbar = () => {
                             <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-all">Login</span>
                         </Link>
                     )}
-                    <i className="w-[22px] h-[22px] mx-3 text-gray-800 cursor-pointer hover:text-black hover:shadow-md transition-all md:hidden">
-                        <FontAwesomeIcon icon={faBars} />
-                    </i>
+                    <input type="checkbox" id="menu-toggle" className="hidden peer" />
+                    <label htmlFor="menu-toggle" className="flex items-center w-[24px] h-[24px] mx-3 text-gray-800 cursor-pointer hover:text-black transition-all md:hidden z-10">
+                        <FontAwesomeIcon icon={faBars} className='h-5' />
+                    </label>
+
+                    <ul className='absolute top-0 left-0 w-screen h-screen hidden flex-col justify-center items-center backdrop-blur-md bg-white/60 gap-8 peer-checked:flex md:hidden'>
+                        <li>
+                            <Link href="/" className='text-2xl'>
+                                <span className={page === "/" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Home</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/posts" className='text-2xl'>
+                                <span className={page === "/posts" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Posts</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about" className='text-2xl'>
+                                <span className={page === "/about" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>About</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/contact" className='text-2xl'>
+                                <span className={page === "/contact" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Contact</span>
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </>
