@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const page = () => {
     return (
         <div className="grow mt-8 flex flex-col items-center h-screen md:h-auto gap-4">
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center text-center'>
                 <h1 className='text-3xl font-bold leading-10'>Register a new account</h1>
                 <p>Or <Link href="/login" className='hover:text-blue-500 transition-all underline hover:no-underline'>log in to an existing account</Link></p>
             </div>

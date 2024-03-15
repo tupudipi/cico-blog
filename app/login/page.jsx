@@ -7,7 +7,7 @@ import { signIn } from 'next-auth/react';
 const page = () => {
     return (
         <div className="grow mt-8 flex flex-col items-center h-screen md:h-auto gap-4">
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center text-center'>
                 <h1 className='text-3xl font-bold leading-10'>Log in to your account</h1>
                 <p>Or <Link href="/register" className='hover:text-blue-500 transition-all underline hover:no-underline'>register a new account</Link></p>
             </div>

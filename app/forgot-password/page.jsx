@@ -2,7 +2,7 @@
 const page = () => {
     return (
         <div className="grow mt-8 flex flex-col items-center h-screen md:h-auto gap-4">
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center text-center'>
                 <h1 className='text-3xl font-bold leading-10'>Forgot your password?</h1>
             </div>
 

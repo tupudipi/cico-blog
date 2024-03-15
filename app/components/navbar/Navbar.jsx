@@ -16,10 +16,12 @@ const Navbar = () => {
     return (
         <>
             <nav className='flex gap-3 items-center justify-between py-4'>
-                <div className='flex gap-3 items-center'>
-                    <Image src="/logo.png" width={48} height={48} className='rounded-full' alt='Cico Blog Logo' />
-                    <h2 className='text-xl font-semibold'>Cico's Blog</h2>
-                </div>
+                <Link href="/">
+                    <div className='flex gap-3 items-center'>
+                        <Image src="/logo.png" width={48} height={48} className='rounded-full' alt='Cico Blog Logo' />
+                        <h2 className='text-xl font-semibold'>Cico's Blog</h2>
+                    </div>
+                </Link>
 
                 <ul className='hidden md:flex gap-6 items-center '>
                     <li>
