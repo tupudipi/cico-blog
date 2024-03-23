@@ -13,6 +13,8 @@ const WritePage = () => {
         }
     }, [session]);
 
+    console.log(status, session?.user.email, process.env.NEXT_PUBLIC_ADMIN_MAIL);
+
     if (session && session.user.email == process.env.NEXT_PUBLIC_ADMIN_MAIL) {
         return (
             <div className="grow mt-8">

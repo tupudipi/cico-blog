@@ -18,6 +18,7 @@ const Navbar = () => {
         setIsClient(true);
     }, []);
 
+    console.log(isClient , status, session?.user.email, process.env.NEXT_PUBLIC_ADMIN_MAIL);
 
     return (
         <>
@@ -50,7 +51,7 @@ const Navbar = () => {
                             <span className={page === "/contact" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Contact</span>
                         </Link>
                     </li>
-                         
+
                     {isClient && status == "authenticated" && session?.user.email === process.env.NEXT_PUBLIC_ADMIN_MAIL && (
                         <li>
                             <Link href="/write">
