@@ -6,12 +6,18 @@ import { usePathname } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { signOut, useSession } from 'next-auth/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Navbar = () => {
     const page = usePathname();
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const [isOpen, setIsOpen] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
 
     return (
         <>
@@ -44,6 +50,14 @@ const Navbar = () => {
                             <span className={page === "/contact" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Contact</span>
                         </Link>
                     </li>
+                         
+                    {isClient && status == "authenticated" && session?.user.email === process.env.NEXT_PUBLIC_ADMIN_MAIL && (
+                        <li>
+                            <Link href="/write">
+                                <span className={page === "/write" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Write</span>
+                            </Link>
+                        </li>
+                    )}
                 </ul>
 
                 <div className='flex gap-4 items-center'>
