@@ -1,7 +1,28 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import prisma from '@/app/utils/connect';
+import Pagination from '../pagination/Pagination';
 
-const CardList = () => {
+
+export default async function CardList({ page=1, cat}) {
+  const POSTS_PER_PAGE = 2;
+
+  const query = {
+    take: POSTS_PER_PAGE,
+    skip: (page - 1) * POSTS_PER_PAGE,
+    where: {
+      ...(cat && { catSlug: cat }),
+    },
+  };
+
+  const [posts, count] = await prisma.$transaction([
+    prisma.post.findMany(query),
+    prisma.post.count({ where: query.where })
+  ]);
+
+  const hasPrev = POSTS_PER_PAGE * (page - 1) > 0;
+  const hasNext = POSTS_PER_PAGE * page < count;
+
   return (
     <div id="posts" className='sm:w-full md:w-2/3 flex flex-col justify-between'>
       <div id="post-list">
@@ -37,14 +58,8 @@ const CardList = () => {
           </div>
         </div>
       </div>
-
-      <div id='page-buttons' className='flex justify-between mt-4'>
-        <button className='border-2 py-1 px-4 border-blue-400 text-white hover:blue-red-700 shadow-md  hover:shadow-lg transition-all bg-blue-400 bg-opacity-75 hover:bg-opacity-100'>Previous</button>
-        <button className='border-2 py-1 px-4 border-blue-400 text-white hover:blue-red-700 shadow-md  hover:shadow-lg transition-all bg-blue-400 bg-opacity-75 hover:bg-opacity-100'>Next</button>
-      </div>
+      <Pagination page={page} hasNext={hasNext} hasPrev={hasPrev}/>
 
     </div>
   )
 }
-
-export default CardList

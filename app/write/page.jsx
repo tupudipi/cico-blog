@@ -103,7 +103,6 @@ const WritePage = () => {
     if (!session || session.user.email !== process.env.NEXT_PUBLIC_ADMIN_MAIL) {
         return (
             <div className="grow mt-8">
-                <h1 className="text-xl font-semibold text-red-500">You are not authorized to access this page</h1>
             </div>
         );
     }

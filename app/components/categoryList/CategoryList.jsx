@@ -1,31 +1,65 @@
 import Link from 'next/link';
+import prisma from '@/app/utils/connect';
 
-const CategoryList = () => {
-  return (
-    <div id="categories">
-    <h2 className='text-2xl font-semibold mt-6 mb-3'>Categories</h2>
-    <div className='flex gap-4 w-full flex-wrap'>
-      <Link href="/posts?cat=style" className='grow'>
-        <button className='w-full rounded-full py-1 px-4 bg-blue-500 text-white opacity-75 hover:opacity-100 hover:shadow-blue transition-all'>Style</button>
-      </Link>
-      <Link href="/posts?cat=food" className='grow'>
-        <button className='w-full rounded-full py-1 px-4 bg-red-500 text-white opacity-75 hover:opacity-100 hover:shadow-red transition-all'>Food</button>
-      </Link>
-      <Link href="/posts?cat=travel" className='grow'>
-        <button className='w-full rounded-full py-1 px-4 bg-green-500 text-white opacity-75 hover:opacity-100 hover:shadow-green transition-all'>Travel</button>
-      </Link>
-      <Link href="/posts?cat=culture" className='grow'>
-        <button className='w-full rounded-full py-1 px-4 bg-yellow-500 text-white opacity-75 hover:opacity-100 hover:shadow-yellow transition-all'>Culture</button>
-      </Link>
-      <Link href="/posts?cat=coding" className='grow'>
-        <button className='w-full rounded-full py-1 px-4 bg-purple-500 text-white opacity-75 hover:opacity-100 hover:shadow-purple transition-all'>Coding</button>
-      </Link>
-      <Link href="/posts?cat=leisure" className='grow'>
-        <button className='w-full rounded-full py-1 px-4 bg-pink-500 text-white opacity-75 hover:opacity-100 hover:shadow-pink transition-all'>Leisure</button>
-      </Link>
-    </div>
-  </div>
-  )
+async function getData() {
+  try {
+    const categories = await prisma.category.findMany({
+      include: {
+        posts: true,
+      },
+    });
+
+    const categoriesWithViews = categories.map(category => ({
+      id: category.id,
+      slug: category.slug,
+      title: category.title,
+      image: category.image,
+      totalViews: category.posts.reduce((sum, post) => sum + post.views, 0),
+    }));
+
+    const sortedCategories = categoriesWithViews.sort((a, b) => b.totalViews - a.totalViews);
+
+    return sortedCategories;
+  } catch (err) {
+    throw new Error('Failed to fetch data');
+  }
 }
 
-export default CategoryList
+export default async function CategoryList() {
+  const categories = await getData();
+  const categoryColors = {
+    style: 'bg-blue-500',
+    food: 'bg-red-500',
+    travel: 'bg-green-500',
+    culture: 'bg-yellow-500',
+    coding: 'bg-purple-500',
+    leisure: 'bg-pink-500',
+};
+const shadowColors = {
+  style: 'hover:shadow-blue',
+  food: 'hover:shadow-red',
+  travel: 'hover:shadow-green',
+  culture: 'hover:shadow-yellow',
+  coding: 'hover:shadow-purple',
+  leisure: 'hover:shadow-pink',
+};
+
+  return (
+    <div id="categories">
+      <h2 className='text-2xl font-semibold mt-6 mb-3'>Categories</h2>
+      <div className='flex gap-4 w-full flex-wrap'>
+        {categories.map(category => {
+          const colorClass = categoryColors[category.slug.toLowerCase()];
+          const hoverShadow = shadowColors[category.slug.toLowerCase()];
+          return (
+            <Link href={`/posts?cat=${category.slug}`} className='grow' key={category.id}>
+              <button className={`w-full rounded-full py-1 px-4 ${colorClass} text-white opacity-75 hover:opacity-100 ${hoverShadow} transition-all capitalize`}>
+                {category.title}
+              </button>
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  )
+}

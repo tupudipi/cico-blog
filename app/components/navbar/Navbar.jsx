@@ -40,7 +40,7 @@ const Navbar = () => {
                     </div>
                 </Link>
 
-                <ul className='hidden md:flex gap-6 items-center '>
+                <ul className='hidden md:flex gap-6 items-center'>
                     <li>
                         <Link href="/">
                             <span className={page === "/" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Home</span>
