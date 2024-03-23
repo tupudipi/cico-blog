@@ -18,7 +18,17 @@ const Navbar = () => {
         setIsClient(true);
     }, []);
 
-    console.log(isClient , status, session?.user.email, process.env.NEXT_PUBLIC_ADMIN_MAIL);
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
     return (
         <>
@@ -98,6 +108,14 @@ const Navbar = () => {
                                 <span className={page === "/contact" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Contact</span>
                             </Link>
                         </li>
+
+                        {isClient && status == "authenticated" && session?.user.email === process.env.NEXT_PUBLIC_ADMIN_MAIL && (
+                            <li>
+                                <Link href="/write" className='text-2xl'>
+                                    <span className={page === "/write" ? "font-semibold hover:text-blue-500 transition-all" : "hover:text-blue-500 transition-all"}>Write</span>
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </nav>
