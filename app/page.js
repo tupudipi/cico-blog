@@ -4,7 +4,8 @@ import Menu from './components/menu/Menu';
 import CategoryList from './components/categoryList/CategoryList';
 import CardList from './components/CardList/CardList';
 
-export default function Home() {
+export default function Home(props) {
+  const { page } = props;
   return (
     <div className="grow">
       <main className='flex flex-col gap-8'>
@@ -35,11 +36,16 @@ export default function Home() {
         <CategoryList />
 
         <div id="content" className='flex flex-col md:flex-row md:justify-between sm:gap-12 md:gap-32'>
-          <CardList />
-            <Menu />
+          <CardList page={page} />
+          <Menu />
         </div>
 
       </main>
     </div>
   );
 }
+
+Home.getInitialProps = async ({ query }) => {
+  const page = query && query.page ? Number(query.page) : 1;
+  return { page };
+};

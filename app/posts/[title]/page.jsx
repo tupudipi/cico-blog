@@ -22,7 +22,7 @@ export default async function SinglePage({ params }) {
                     <h2 className="text-3xl mb-8 md:mb-12 font-semibold text-center md:text-left">{post.title}</h2>
                     <div className="flex flex-row items-center gap-4">
                         <div className='w-[50px] h-[50px] relative z-10'>
-                            <Image src='/coding.png' alt='Post Author User Image' fill className='rounded-full object-cover' />
+                            <Image src={post.user.image} alt='Post Author User Image' fill className='rounded-full object-cover' />
                         </div>
                         <div className="flex flex-col gap-1 text-gray-500 items-center md:items-start">
                             <span className="font-medium">{post.user.name}</span>
@@ -45,7 +45,7 @@ export default async function SinglePage({ params }) {
 
                 <div className="flex flex-col md:flex-row gap-12">
                     <div className="w-full md:w-2/3">
-                        <Comments />
+                        <Comments post={post.slug}/>
                     </div>
                     <Menu />
                 </div>
